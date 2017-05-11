@@ -1,6 +1,5 @@
 <?php
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
+
 $link = mysqli_connect("localhost", "root", "senha", "database");
  
 // Check connection
@@ -8,23 +7,20 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
  
-// Attempt select query execution
-$sql = "SELECT * FROM persons";
+$sql = "SELECT * FROM database";
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
         echo "<table>";
             echo "<tr>";
-                echo "<th>id</th>";
-                echo "<th>first_name</th>";
-                echo "<th>last_name</th>";
-                echo "<th>email</th>";
+                echo "<th>Nome</th>";
+                echo "<th>Sobrenome</th>";
+                echo "<th>Sexo</th>";
             echo "</tr>";
         while($row = mysqli_fetch_array($result)){
             echo "<tr>";
-                echo "<td>" . $row['id'] . "</td>";
-                echo "<td>" . $row['first_name'] . "</td>";
-                echo "<td>" . $row['last_name'] . "</td>";
-                echo "<td>" . $row['email'] . "</td>";
+                echo "<td>" . $row['NomeCliente'] . "</td>";
+                echo "<td>" . $row['SobrenomeCliente'] . "</td>";
+                echo "<td>" . $row['Sexo'] . "</td>";
             echo "</tr>";
         }
         echo "</table>";
